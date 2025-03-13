@@ -1,4 +1,3 @@
-from time import sleep
 from typing import List
 
 import serial
@@ -27,7 +26,7 @@ def main():
     if msg is not None and isinstance(msg.data, ReplyData):
         print(f"reply received: 0x{msg.data.reply_type:X}")
 
-    # read 3 codes
+    # read 6 codes
     print("listening for codes...")
     codes: List[RcData] = []
     for i in range(0, 6):
@@ -53,10 +52,10 @@ def main():
     if msg is not None and isinstance(msg.data, ReplyData):
         print(f"reply received: 0x{msg.data.reply_type:X}")
 
-    input("press enter to send last code...")
+    input("press ENTER to send the last code received...")
 
     # send tx request
-    print("sending last tx request...")
+    print("sending last code tx request...")
     last_code = codes[-1]
     last_code.repeat = 4
     tx_request = Msg(msg_type=MsgType.TX_REQUEST, data=last_code)
