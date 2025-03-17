@@ -14,10 +14,10 @@ class MsgType(IntEnum):
 
 
 class ReplyType(IntEnum):
-    OK = 0x0
-    BAD_CRC = 0x1
-    INVALID_SIZE = 0x2
-    INVALID_MSG = 0x3
+    OK = 0x00
+    BAD_CRC = 0x01
+    INVALID_SIZE = 0x02
+    INVALID_MSG = 0x03
 
 
 def calculate_crc8(data: bytes) -> int:
